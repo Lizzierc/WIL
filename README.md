@@ -36,6 +36,11 @@ Purpose: Tracks user interactions with buttons or other UI elements. Helps debug
 Example:
 tsx
 Copy code
+
+
+www.youtube.com/@RelebogileMaponya-sb1gr
+
+https://youtu.be/iYFsYPpeuk8?si=ue9sexvXGRblQOY8
 console.log(`Selected course: ${course.title}`);
 Purpose: Logs the values of dynamically generated items (like a list of courses). Useful for verifying that the app responds to dynamic input correctly.
 
