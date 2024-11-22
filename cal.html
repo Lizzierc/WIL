@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate Total Fees | Skills Set Go</title>
+
+    <!-- SEO Tags -->
+    <meta name="description" content="Calculate total course fees for Skills Set Go. Choose from a variety of six-month and six-week short courses such as First Aid, Sewing, Cooking, and more.">
+    <meta name="keywords" content="Skills Set Go, course fees, First Aid, Sewing, Landscaping, Life Skills, Child Minding, Cooking, Garden Maintenance, six-month courses, six-week courses, skill development">
+    <meta name="author" content="Skills Set Go">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Calculate Total Fees | Skills Set Go">
+    <meta property="og:description" content="Choose from six-month and six-week courses and calculate your total fees. Get discounts based on the number of courses selected.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.skillssetgo.com/calculate-fees">
+    <meta property="og:image" content="https://www.skillssetgo.com/images/logo.png">
+
+    <!-- End SEO Tags -->
+    
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function calculateFees() {
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const email = document.getElementById('email').value.trim();
+            
+            if (!name || !phone || !email) {
+                alert("Please fill in all required fields (Name, Phone, and Email).");
+                return;
+            }
+
+            const fees = { 
+                "First Aid": 1500, 
+                "Sewing": 1500, 
+                "Landscaping": 1500, 
+                "Life Skills": 1500,
+                "Child Minding": 750,
+                "Cooking": 750,
+                "Garden Maintenance": 750 
+            };
+
+            const selectedCourses = Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(el => el.value);
+            
+            if (selectedCourses.length === 0) {
+                alert("Please select at least one course.");
+                return;
+            }
+
+            let total = selectedCourses.reduce((sum, course) => sum + fees[course], 0);
+            total += total * 0.15; // Add 15% VAT
+
+            // Determine discount percentage based on the number of courses
+            let discountPercentage = 0;
+            const courseCount = selectedCourses.length;
+
+            if (courseCount === 1) {
+                discountPercentage = 0;
+            } else if (courseCount === 2) {
+                discountPercentage = 5;
+            } else if (courseCount === 3) {
+                discountPercentage = 10;
+            } else {
+                discountPercentage = 15;
+            }
+
+            // Apply discount
+            const discountAmount = (total * (discountPercentage / 100));
+            total -= discountAmount;
+
+            const totalMessage = `Total Fee after ${discountPercentage}% discount: R${total.toFixed(2)}`;
+            document.getElementById('total').innerText = totalMessage;
+
+            // Alert the total fee
+            alert(totalMessage);
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Calculate Total Fees</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="six-months.html">Six-Month Courses</a>
+            <a href="six-week.html">Six-Week Courses</a>
+            <a href="cal.html">Fees</a>
+            <a href="contact.html">Contact Us</a>
+        </nav>
+    </header>
+    <main>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+
+            <h3>Select Courses:</h3>
+            <h4>Six-Month Courses</h4>
+            <input type="checkbox" value="First Aid"> First Aid<br>
+            <input type="checkbox" value="Sewing"> Sewing<br>
+            <input type="checkbox" value="Landscaping"> Landscaping<br>
+            <input type="checkbox" value="Life Skills"> Life Skills<br>
+            <h4>Six-Week Short Courses</h4>
+            <input type="checkbox" value="Child Minding"> Child Minding<br>
+            <input type="checkbox" value="Cooking"> Cooking<br>
+            <input type="checkbox" value="Garden Maintenance"> Garden Maintenance <br>
+            
+            <button type="button" onclick="calculateFees()">Calculate Total Fees</button>
+        </form>
+        <p id="total"></p>
+    </main>
+    
+        
+    </style>
+</head>
+<body>
+    <!-- Page content -->
+    <footer>
+        
+        <p>&copy; 2024 Skills Set Go</p>
+
+        <p>Follow Us On</p>
+       
+        <p>Address: 123 Skillset Ave, Warrandyte: Johannesburg</p>
+        <p>Phone: <a href="tel:+089 765 4321">089 765 4321</a></p>
+        <p>Email: <a href="mailto:info@skillssetgo.com">info@skillssetgo.com</a></p>
+        <p>Instagram: <a href="https://www.instagram.com/">instagram@skillssetgo.com</a></p>
+        <p>twitter: <a href="https://x.com/login?mx=2">twitter@skillssetgo.com</a></p>
+        <p>Facebook: <a href="https://www.facebook.com/login.php">facebook@skillssetgo.com</a></p>
+        
+    </footer>
+    
+</body>
+</html>
